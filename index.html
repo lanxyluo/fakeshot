@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake Screenshot Tools Collection</title>
+    <style>
+        :root {
+            --apple-bg: #f5f5f7;
+            --apple-blue: #0071e3;
+            --apple-dark: #1d1d1f;
+            --apple-gray: #86868b;
+            --apple-light-gray: #e8e8ed;
+            --apple-card-bg: #ffffff;
+            --apple-highlight: #2997ff;
+            --apple-success: #4cd964;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--apple-bg);
+            color: var(--apple-dark);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        h1 {
+            font-size: 48px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #007bff, #6610f2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: var(--apple-gray);
+            margin-bottom: 30px;
+        }
+        
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        .search-input {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            background-color: var(--apple-light-gray);
+            transition: all 0.3s ease;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px var(--apple-blue);
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tool-card {
+            background-color: var(--apple-card-bg);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+        
+        .tool-image {
+            height: 160px;
+            background-color: var(--apple-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .tool-image img {
+            max-width: 60%;
+            max-height: 60%;
+        }
+        
+        .tool-image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(29, 29, 31, 0.3), rgba(0, 113, 227, 0.2));
+        }
+        
+        .tool-content {
+            padding: 25px;
+        }
+        
+        .tool-name {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--apple-dark);
+        }
+        
+        .tool-description {
+            color: var(--apple-gray);
+            margin-bottom: 20px;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+        
+        .tool-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background-color: var(--apple-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+        
+        .tool-link:hover {
+            background-color: var(--apple-highlight);
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            color: var(--apple-gray);
+            font-size: 14px;
+            border-top: 1px solid var(--apple-light-gray);
+        }
+        
+        .disclaimer {
+            margin-top: 15px;
+            font-weight: 500;
+            color: #ff3b30;
+        }
+        
+        @media (max-width: 768px) {
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 36px;
+            }
+            
+            .subtitle {
+                font-size: 18px;
+            }
+        }
+        
+        /* Added for tool iconography */
+        .tool-icon {
+            font-size: 48px;
+            color: white;
+        }
+        
+        /* For no results message */
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: var(--apple-gray);
+            font-size: 18px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fake Screenshot Tools</h1>
+        <p class="subtitle">Create realistic fake screenshots for pranks and entertainment</p>
+        
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Search for tools..." id="searchInput">
+        </div>
+    </header>
+    
+    <div class="no-results" id="noResults">
+        No tools match your search criteria
+    </div>
+    
+    <div class="tools-grid" id="toolsGrid">
+        <!-- Tool 1: Zeoob -->
+        <div class="tool-card" data-keywords="zeoob tweet twitter instagram facebook posts social media">
+            <div class="tool-image" style="background: linear-gradient(45deg, #1DA1F2, #4267B2);">
+                <div class="tool-icon">📱</div>
+                <div class="tool-image-overlay"></div>
+            </div>
+            <div class="tool-content">
+                <h3 class="tool-name">Zeoob</h3>
+                <p class="tool-description">Create realistic fake social media posts including Twitter tweets, Instagram photos, and Facebook posts. Perfect for creating mockups or harmless pranks.</p>
+                <a href="https://zeoob.com/" target="_blank" class="tool-link">Visit Tool</a>
+            </div>
+        </div>
+        
+        <!-- Tool 2: FakeWhats -->
+        <div class="tool-card" data-keywords="fakewhats whatsapp chat message conversation messaging">
+            <div class="tool-image" style="background: linear-gradient(45deg, #25D366, #128C7E);">
+                <div class="tool-icon">💬</div>
+                <div class="tool-image-overlay"></div>
+            </div>
+            <div class="tool-content">
+                <h3 class="tool-name">FakeWhats</h3>
+                <p class="tool-description">Generate fake WhatsApp chat messages and conversations with customizable profiles, timestamps, and content. Great for creating chat mockups.</p>
+                <a href="https://www.fakewhats.com/" target="_blank" class="tool-link">Visit Tool</a>
+            </div>
+        </div>
+        
+        <!-- Tool 3: FakeDetail -->
+        <div class="tool-card" data-keywords="fakedetail identity details profile generator">
+            <div class="tool-image" style="background: linear-gradient(45deg, #FF9500, #FF2D55);">
+                <div class="tool-icon">👤</div>
+                <div class="tool-image-overlay"></div>
+            </div>
+            <div class="tool-content">
+                <h3 class="tool-name">FakeDetail</h3>
+                <p class="tool-description">Create fake identities and personal details for fictional characters, writing projects, or mockups. Generates names, addresses, and other profile information.</p>
+                <a href="https://fakedetail.com/" target="_blank" class="tool-link">Visit Tool</a>
+            </div>
+        </div>
+        
+        <!-- Tool 4: FakeInfo -->
+        <div class="tool-card" data-keywords="fakeinfo information generator details data">
+            <div class="tool-image" style="background: linear-gradient(45deg, #5856D6, #AF52DE);">
+                <div class="tool-icon">📋</div>
+                <div class="tool-image-overlay"></div>
+            </div>
+            <div class="tool-content">
+                <h3 class="tool-name">FakeInfo</h3>
+                <p class="tool-description">Generate various types of fake information including identities, credit cards (for testing), addresses, and more. Useful for developers and content creators.</p>
+                <a href="https://fakeinfo.net/" target="_blank" class="tool-link">Visit Tool</a>
+            </div>
+        </div>
+        
+        <!-- Tool 5: Prankshit -->
+        <div class="tool-card" data-keywords="prankshit prank joke social media screenshot">
+            <div class="tool-image" style="background: linear-gradient(45deg, #34C759, #30B0C7);">
+                <div class="tool-icon">🤣</div>
+                <div class="tool-image-overlay"></div>
+            </div>
+            <div class="tool-content">
+                <h3 class="tool-name">Prankshit</h3>
+                <p class="tool-description">Create fake social media screenshots to prank your friends. Supports multiple platforms including Instagram, Twitter, and Facebook with customizable elements.</p>
+                <a href="https://prankshit.com/" target="_blank" class="tool-link">Visit Tool</a>
+            </div>
+        </div>
+        
+        <!-- Tool 6: Tweetgen -->
+        <div class="tool-card" data-keywords="tweetgen tweet twitter generator screenshot">
+            <div class="tool-image" style="background: linear-gradient(45deg, #1DA1F2, #14171A);">
+                <div class="tool-icon">🐦</div>
+                <div class="tool-image-overlay"></div>
+            </div>
+            <div class="tool-content">
+                <h3 class="tool-name">Tweetgen</h3>
+                <p class="tool-description">The most realistic fake tweet generator. Create authentic-looking Twitter screenshots with customizable usernames, verified badges, likes, retweets, and timestamps.</p>
+                <a href="https://www.tweetgen.com/" target="_blank" class="tool-link">Visit Tool</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Curated collection of fake screenshot and mockup tools</p>
+        <p class="disclaimer">*** The tools on this website are for entertainment purposes only. Commercial use is prohibited. ***</p>
+    </footer>
+
+    <script>
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const toolsGrid = document.getElementById('toolsGrid');
+        const toolCards = document.querySelectorAll('.tool-card');
+        const noResults = document.getElementById('noResults');
+        
+        searchInput.addEventListener('input', function() {
+            const searchQuery = this.value.toLowerCase().trim();
+            let hasResults = false;
+            
+            toolCards.forEach(card => {
+                const keywords = card.getAttribute('data-keywords').toLowerCase();
+                const content = card.textContent.toLowerCase();
+                
+                if (keywords.includes(searchQuery) || content.includes(searchQuery) || searchQuery === '') {
+                    card.style.display = 'block';
+                    hasResults = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            noResults.style.display = hasResults ? 'none' : 'block';
+        });
+    </script>
+</body>
+</html>
